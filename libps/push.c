@@ -6,7 +6,7 @@
 /*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 23:16:10 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/12 23:21:07 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/17 19:38:31 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_push_a(t_stack **stack_a, t_stack **stack_b)
 		if (*stack_a)
 			(*stack_a)->prev = NULL;
 		first->next = NULL;
+		first->prev = NULL;
 		if (*stack_b == NULL)
 			*stack_b = first;
 		else
@@ -47,6 +48,7 @@ void	ft_push_b(t_stack **stack_a, t_stack **stack_b)
 		if (*stack_b)
 			(*stack_b)->prev = NULL;
 		first->next = NULL;
+		first->prev = NULL;
 		if (*stack_a == NULL)
 			*stack_a = first;
 		else

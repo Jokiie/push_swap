@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_tab_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccodere <ccodere@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/07 23:19:08 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/13 13:30:05 by ccodere          ###   ########.fr       */
+/*   Created: 2024/09/13 12:09:10 by ccodere           #+#    #+#             */
+/*   Updated: 2024/09/17 19:27:44 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    ft_printf_stack_content(t_stack *stack)
+t_bool	ft_tab_is_sorted(int *tab, int size, int i)
 {
-    while (stack)
+    int j;
+
+    j = i + 1;
+    while (i < size && j < size)
     {
-        if (stack->content)
-            ft_printf("%d, ", stack->content);
-        else
-            ft_printf("0, ");
-        stack = stack->next;
+        if (tab[i++] > tab[j++])
+            return (FALSE);
     }
-}
-
-int    ft_count_args(char **args)
-{
-    int count;
-
-    count = 0;
-    while (args[count])
-        count++;
-    return (count);
+    return (TRUE);
 }
 
 int	ft_tabsize(int *tab)

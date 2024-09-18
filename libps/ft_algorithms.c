@@ -26,51 +26,51 @@ void	ft_sort_2(t_stack **stack)
 		return ;
 }
 
-void	ft_sort_3(t_stack **stack_a)
+void	ft_sort_3(t_stack **stack_a, t_stack **stack_b)
 {
-	if ((*stack_a)->content > (*stack_a)->next->content)
-		ft_swap_a(stack_a);
-	if ((*stack_a)->content > (*stack_a)->next->next->content)
-		ft_rotate_a(stack_a);
-	if ((*stack_a)->next->next->content < (*stack_a)->content)
+	while (!ft_stack_is_sorted(stack_a))
 	{
-		ft_reverse_rotate_a(stack_a);
-		ft_swap_a(stack_a);
+		ft_push_a(stack_a, stack_b);
+		ft_sort_2(stack_a);
+		ft_push_b(stack_a, stack_b);
 		if ((*stack_a)->content > (*stack_a)->next->content)
 			ft_swap_a(stack_a);
-		else
+		else if ((*stack_a)->content > (*stack_a)->next->next->content)
 			ft_rotate_a(stack_a);
 	}
 }
 
 void	ft_sort_4(t_stack **stack_a, t_stack **stack_b)
 {
-	ft_push_a(stack_a, stack_b);
-	ft_sort_3(stack_a);
-	ft_push_b(stack_a, stack_b);
-	if (((*stack_a)->content) > ((*stack_a)->next->next->next->content))
-		ft_rotate_a(stack_a);
-	if (((*stack_a)->content) > ((*stack_a)->next->next->content))
+	while (!ft_stack_is_sorted(stack_a))
 	{
-		ft_rotate_a(stack_a);
-		ft_swap_a(stack_a);
 		ft_push_a(stack_a, stack_b);
-		ft_reverse_rotate_a(stack_a);
-		ft_swap_a(stack_a);
+		ft_sort_3(stack_a, stack_b);
 		ft_push_b(stack_a, stack_b);
+		if (((*stack_a)->content) > ((*stack_a)->next->next->next->content))
+			ft_rotate_a(stack_a);
+		if (((*stack_a)->content) > ((*stack_a)->next->next->content))
+		{
+			ft_rotate_a(stack_a);
+			ft_swap_a(stack_a);
+			ft_push_a(stack_a, stack_b);
+			ft_reverse_rotate_a(stack_a);
+			ft_swap_a(stack_a);
+			ft_push_b(stack_a, stack_b);
+		}
+		if (((*stack_a)->content) > ((*stack_a)->next->content))
+			ft_swap_a(stack_a);
 	}
-	if (((*stack_a)->content) > ((*stack_a)->next->content))
-		ft_swap_a(stack_a);
 }
 
 void	ft_sort_stack(t_stack **stack_a, t_stack **stack_b, int size)
 {
-	if (size == 1)
+	if (size == 0 || size == 1)
 		return ;
 	else if (size == 2)
 		ft_sort_2(stack_a);
 	else if (size == 3)
-		ft_sort_3(stack_a);
+		ft_sort_3(stack_a, stack_b);
 	else if (size == 4)
 		ft_sort_4(stack_a, stack_b);
 	else

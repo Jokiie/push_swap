@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_args_checker.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccodere <ccodere@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 23:10:44 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/17 17:53:26 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/17 23:30:17 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,16 @@
 // [ ] to do : condition to handle the case the argument is mixed with strings and int
 // [ ] to do : condition to check that no sign is used directly after a number 
 // [x] to do : condition to check is there are multiple same numbers(same value) ex: 22 22
+int    ft_count_args(char **args)
+{
+    int count;
+
+    count = 0;
+    while (args[count])
+        count++;
+    return (count);
+}
+
 int    ft_check_nbr(long int nbr)
 {
     if ((long int)nbr > 2147483647 || (long int)nbr < -2147483648)
@@ -34,8 +44,8 @@ int    ft_isinvalid_char(char *str)
         if (ft_isalpha(str[i]))
             return (1);
         // if the char is a digit and the next char is not a space
-        // if (ft_isdigit(str[i]) && str[i + 1] != ' ')
-        //     return (1);
+        if (ft_isdigit(str[i]) && (str[i + 1] == '-' || str[i + 1] == '+') && ft_isdigit(str[i + 2]))
+            return (1);
         // if the char is not a digit, a space a '+' or a '-'
         if (!ft_isdigit(str[i]) && str[i] != ' ' && str[i] != '-' && str[i] != '+')
             return (1);
@@ -82,17 +92,17 @@ int    ft_check_args(int argc, char **argv, int i)
 {
     while (i < argc)
     {
+        if (ft_check_duplicate(argc, argv, i) == 1)
+        {
+            ft_perror("Error\n");
+            return (1);
+        }
         if (ft_isinvalid_char(argv[i]) == 1)
         {
             ft_perror("Error\n");
             return (1);
         }
         if (ft_check_nbr(ft_atoi(argv[i])) == 1)
-        {
-            ft_perror("Error\n");
-            return (1);
-        }
-        if (ft_check_duplicate(argc, argv, i) == 1)
         {
             ft_perror("Error\n");
             return (1);

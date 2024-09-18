@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccodere <ccodere@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 04:07:26 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/17 17:48:19 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/17 23:13:37 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	ft_init_stack(t_stack **stack, int *tab, int size)
 	while (i < size)
 	{
 		ft_addnode_back(stack, ft_newnode(&tab[i]));
-		ft_printf("tab[%d] = %d\n", i, tab[i]);
 		i++;
 	}
 }
@@ -61,22 +60,25 @@ int	main(int argc, char **argv)
 	{
 		args = ft_split(argv[1], ' ');
 		size = ft_count_args(args);
-		if (ft_check_args(size, args, 0) == 0)
+		if (ft_check_args(size, args, 1) == 0)
 		{
 			tab = ft_init_tab(args, size);
-			ft_init_stack(&stack_a, tab, size);
 		}
+		else
+			return (1);
 		ft_free_split(args);
 	}
 	else if (argc > 2)
 	{
-		size = argc - 1;
-		if (ft_check_args(argc, argv, 1) == 0)
+		if (ft_check_args(argc - 1, argv + 1, 1) == 0)
 		{
+			size = argc - 1;
 			tab = ft_init_tab(argv + 1, size);
-			ft_init_stack(&stack_a, tab, size);
 		}
+		else
+			return (1);
 	}
+	ft_init_stack(&stack_a, tab, size);
 	ft_sort_stack(&stack_a, &stack_b, size);
 	if (stack_a)
 		ft_printf_stack_content(stack_a);
