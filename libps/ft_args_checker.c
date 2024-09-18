@@ -6,7 +6,7 @@
 /*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 23:10:44 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/17 23:30:17 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/18 02:21:06 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,13 @@ int    ft_count_args(char **args)
     return (count);
 }
 
-int    ft_check_nbr(long int nbr)
+int    ft_check_nbr(const char *str)
 {
-    if ((long int)nbr > 2147483647 || (long int)nbr < -2147483648)
+    long int nbr;
+
+    nbr = ft_atol(str);
+
+    if (nbr < INT_MIN || nbr > INT_MAX)
         return (1);
     return (0);
 }
@@ -39,34 +43,28 @@ int    ft_isinvalid_char(char *str)
     int i;
 
     i = 0;
+    if (str[0] == '\0' || str[0] == ' ')
+        return (1);
     while (str[i])
     {
+        if (ft_isdigit(str[i]))
+        {
+            if ((str[i + 1] && (str[i + 1] == '-' || str[i + 1] == '+')) || ft_isalpha(str[i + 1]))
+                return (1);
+        }
         if (ft_isalpha(str[i]))
             return (1);
-        // if the char is a digit and the next char is not a space
-        if (ft_isdigit(str[i]) && (str[i + 1] == '-' || str[i + 1] == '+') && ft_isdigit(str[i + 2]))
-            return (1);
-        // if the char is not a digit, a space a '+' or a '-'
         if (!ft_isdigit(str[i]) && str[i] != ' ' && str[i] != '-' && str[i] != '+')
             return (1);
-        // if the first character is a space
-        if (i == 0 && str[0] == ' ')
+        if (str[i] == ' ' && str[i + 1] == ' ')
             return (1);
-        // if the char is a '-' and the next char is a '-'
         if ((str[i] == '-' || str[i] == '+') 
             && (str[i + 1] == '-' || str[i + 1] == '+' || str[i + 1] == ' '))
             return (1);
-        // if the char is a space and the next char is a space
-        if (str[i] == ' ' && str[i + 1] == ' ')
-            return (1);
-        // if the last char is not a digit
-        if (!ft_isdigit(str[i]) && str[i + 1] == '\0')
-            return (1);
-        // if a space is following a '-'
-        if ((str[i] == '-' || str[i] == '+' ) && str[i + 1] == ' ')
-            return (1);
         i++;
     }
+    if (str[i - 1] == '-' || str[i - 1] == '+' || str[i - 1] == ' ')
+        return (1);
     return (0);
 }
 
@@ -92,22 +90,22 @@ int    ft_check_args(int argc, char **argv, int i)
 {
     while (i < argc)
     {
-        if (ft_check_duplicate(argc, argv, i) == 1)
-        {
-            ft_perror("Error\n");
-            return (1);
-        }
         if (ft_isinvalid_char(argv[i]) == 1)
         {
             ft_perror("Error\n");
             return (1);
         }
-        if (ft_check_nbr(ft_atoi(argv[i])) == 1)
+        if (ft_check_nbr(argv[i]) == 1)
         {
             ft_perror("Error\n");
             return (1);
         }
         i++;
+    }
+    if (ft_check_duplicate(argc, argv, 0) == 1)
+    {
+        ft_perror("Error\n");
+        return (1);
     }
     return (0);
 }

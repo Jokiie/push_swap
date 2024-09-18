@@ -6,7 +6,7 @@
 #    By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/22 12:04:14 by ccodere           #+#    #+#              #
-#    Updated: 2024/09/12 22:59:23 by ccodere          ###   ########.fr        #
+#    Updated: 2024/09/18 02:23:06 by ccodere          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRCS = ft_isdigit.c ft_isalpha.c ft_isascii.c ft_isprint.c ft_strlen.c ft_bzero.
        ft_strjoin.c ft_strtrim.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c \
        ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_split.c ft_realloc.c \
 	   ft_lstnew.c ft_lstadd_front.c ft_lstlast.c ft_lstsize.c ft_lstadd_back.c \
-	   ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_str_isdigit.c
+	   ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_str_isdigit.c ft_atol.c \
+	   ft_isspace.c
 
 SRCS += $(PRINTF_DIR)/ft_printf.c $(PRINTF_DIR)/ft_itoa_base.c $(PRINTF_DIR)/ft_putbase.c \
 		$(PRINTF_DIR)/ft_putbase_hex.c  $(PRINTF_DIR)/ft_putchar.c $(PRINTF_DIR)/ft_putstr.c

@@ -6,7 +6,7 @@
 /*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 12:20:14 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/07 11:09:14 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/18 02:23:20 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@
 # define CYAN "\033[36m"
 # define GREY "\033[90m"
 # define RESET "\033[0m"
+
 # define BUFFER_SIZE 10240
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
 
 typedef enum e_bool
 {
@@ -56,10 +59,12 @@ int					ft_isalpha(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
+int					ft_isspace(int c);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 
 int					ft_atoi(const char *str);
+long int			ft_atol(const char *str);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 

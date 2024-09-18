@@ -63,16 +63,19 @@ void	ft_sort_4(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
-void	ft_sort_stack(t_stack **stack_a, t_stack **stack_b, int size)
+void	ft_sort_stack(t_stack **stack_a, int size)
 {
+	t_stack	*stack_b;
+
+	stack_b = NULL;
 	if (size == 0 || size == 1)
 		return ;
 	else if (size == 2)
 		ft_sort_2(stack_a);
 	else if (size == 3)
-		ft_sort_3(stack_a, stack_b);
+		ft_sort_3(stack_a, &stack_b);
 	else if (size == 4)
-		ft_sort_4(stack_a, stack_b);
+		ft_sort_4(stack_a, &stack_b);
 	else
-		ft_radix_sort(stack_a, stack_b, size);
+		ft_radix_sort(stack_a, &stack_b, size);
 }

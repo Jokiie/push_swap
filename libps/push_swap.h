@@ -6,7 +6,7 @@
 /*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 22:32:10 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/17 19:39:59 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/18 02:20:23 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	            ft_free_stack(t_stack *stack);
 int					ft_count_args(char **args);
 int					ft_check_args(int argc, char **args, int i);
 int					ft_isinvalid_char(char *str);
-int					ft_check_nbr(long int nbr);
+int					ft_check_nbr(const char *str);
 int					ft_check_duplicate(int argc, char **argv, int i);
 
 t_bool				ft_tab_is_sorted(int *tab, int size, int i);
@@ -69,6 +69,6 @@ void				ft_radix_sort(t_stack **stack_a, t_stack **stack_b, int size);
 void				ft_sort_2(t_stack **stack_a);
 void				ft_sort_3(t_stack **stack_a, t_stack **stack_b);
 void				ft_sort_4(t_stack **stack_a, t_stack **stack_b);
-void				ft_sort_stack(t_stack **stack_a, t_stack **stack_b, int size);
+void				ft_sort_stack(t_stack **stack_a, int size);
 
 #endif

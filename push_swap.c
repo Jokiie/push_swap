@@ -6,14 +6,14 @@
 /*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 04:07:26 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/17 23:13:37 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/18 01:30:32 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libps/push_swap.h"
 
 // [ ] to do : Separate the creation of the stack for 1 arg and 2 args
-// [ ] to do : Add a function to check if the stack is sorted
+// [x] to do : Add a function to check if the stack is sorted
 // [ ] to do : Add a structure that add a pointer to the first and last node
 
 int	*ft_init_tab(char **args, int size)
@@ -44,46 +44,67 @@ void	ft_init_stack(t_stack **stack, int *tab, int size)
 	}
 }
 
+void	ft_init_sort_free(t_stack **stack_a, int *tab, int size)
+{
+		ft_init_stack(stack_a, tab, size);
+		if (!ft_stack_is_sorted(stack_a))		
+			ft_sort_stack(stack_a, size);
+		if (*stack_a)
+		 	ft_printf_stack_content(*stack_a);
+		ft_free_stack(*stack_a);
+		if (tab)
+			free(tab);
+}
+
+char	**ft_combine_args(int argc, char **argv)
+{
+	char	**args;
+	char	**split;
+	int		i;
+	int		j;
+	int		k;
+
+	args = malloc(sizeof(char *) * (argc * 10));
+	if (!args)
+		return (NULL);
+	k = 0;
+	i = 1;
+	while (i < argc)
+	{
+		split = ft_split(argv[i], ' ');
+		j = 0;
+		while (split[j])
+			args[k++] = ft_strdup(split[j++]);
+		ft_free_split(split);
+		i++;
+	}
+	args[k] = NULL;
+	return (args);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
-	t_stack	*stack_b;
 	int		*tab;
 	char	**args;
 	int		size;
 
 	tab = NULL;
 	stack_a = NULL;
-	stack_b = NULL;
-	size = 0;
-	if (argc == 2)
+	if (argc > 1)
 	{
-		args = ft_split(argv[1], ' ');
+		args = ft_combine_args(argc, argv);
 		size = ft_count_args(args);
-		if (ft_check_args(size, args, 1) == 0)
-		{
+		if (ft_check_args(size, args, 0) == 0)
 			tab = ft_init_tab(args, size);
-		}
 		else
+		{
+			ft_free_split(args);
 			return (1);
+		}
 		ft_free_split(args);
 	}
-	else if (argc > 2)
-	{
-		if (ft_check_args(argc - 1, argv + 1, 1) == 0)
-		{
-			size = argc - 1;
-			tab = ft_init_tab(argv + 1, size);
-		}
-		else
-			return (1);
-	}
-	ft_init_stack(&stack_a, tab, size);
-	ft_sort_stack(&stack_a, &stack_b, size);
-	if (stack_a)
-		ft_printf_stack_content(stack_a);
-	ft_free_stacks(&stack_a, &stack_b);
-	if (tab)
-		free(tab);
+	if (size >= 2)
+		ft_init_sort_free(&stack_a, tab, size);
 	return (0);
 }

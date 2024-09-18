@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ccodere <ccodere@student.42.fr>            +#+  +:+       +#+         #
+#    By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/11 12:35:07 by ccodere           #+#    #+#              #
-#    Updated: 2024/09/13 13:55:37 by ccodere          ###   ########.fr        #
+#    Updated: 2024/09/18 01:25:01 by ccodere          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ LIBPS = $(LIBPS_DIR)/libps.a
 
 # [ ] to do: write manually the file here.
 # [ ] to do: rework make push_swap command
-SRCS = $(wildcard *.c)
+SRCS = push_swap.c
 
 OBJS = $(SRCS:.c=.o)
 
