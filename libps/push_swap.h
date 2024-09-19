@@ -6,7 +6,7 @@
 /*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 22:32:10 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/18 02:20:23 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/18 13:12:28 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ void                ft_printf_stack_content(t_stack *stack);
 void				ft_radix_sort(t_stack **stack_a, t_stack **stack_b, int size);
 
 void				ft_sort_2(t_stack **stack_a);
-void				ft_sort_3(t_stack **stack_a, t_stack **stack_b);
-void				ft_sort_4(t_stack **stack_a, t_stack **stack_b);
+void				ft_sort_3(t_stack **stack_a);
+void				ft_sort_5(t_stack **stack_a, t_stack **stack_b);
 void				ft_sort_stack(t_stack **stack_a, int size);
 
 #endif

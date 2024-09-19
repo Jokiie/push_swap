@@ -26,40 +26,31 @@ void	ft_sort_2(t_stack **stack)
 		return ;
 }
 
-void	ft_sort_3(t_stack **stack_a, t_stack **stack_b)
+void	ft_sort_3(t_stack **stack_a)
 {
-	while (!ft_stack_is_sorted(stack_a))
-	{
-		ft_push_a(stack_a, stack_b);
-		ft_sort_2(stack_a);
-		ft_push_b(stack_a, stack_b);
-		if ((*stack_a)->content > (*stack_a)->next->content)
-			ft_swap_a(stack_a);
-		else if ((*stack_a)->content > (*stack_a)->next->next->content)
-			ft_rotate_a(stack_a);
-	}
+	t_stack	*last;
+
+	last = ft_lastnode(*stack_a);
+	if ((*stack_a)->content > (*stack_a)->next->content
+		&& (*stack_a)->content > last->content)
+		ft_rotate_a(stack_a);
+	else if ((*stack_a)->next->content > (*stack_a)->content
+		&& (*stack_a)->next->content > last->content)
+		ft_reverse_rotate_a(stack_a);
+	if ((*stack_a)->content > (*stack_a)->next->content)
+		ft_swap_a(stack_a);
 }
 
-void	ft_sort_4(t_stack **stack_a, t_stack **stack_b)
+void	ft_sort_5(t_stack **stack_a, t_stack **stack_b)
 {
+	t_stack	*last;
+	int	min;
+
+	min = ft_find_min(stack_a);
 	while (!ft_stack_is_sorted(stack_a))
 	{
-		ft_push_a(stack_a, stack_b);
-		ft_sort_3(stack_a, stack_b);
-		ft_push_b(stack_a, stack_b);
-		if (((*stack_a)->content) > ((*stack_a)->next->next->next->content))
-			ft_rotate_a(stack_a);
-		if (((*stack_a)->content) > ((*stack_a)->next->next->content))
-		{
-			ft_rotate_a(stack_a);
-			ft_swap_a(stack_a);
-			ft_push_a(stack_a, stack_b);
-			ft_reverse_rotate_a(stack_a);
-			ft_swap_a(stack_a);
-			ft_push_b(stack_a, stack_b);
-		}
-		if (((*stack_a)->content) > ((*stack_a)->next->content))
-			ft_swap_a(stack_a);
+		last = ft_lastnode(*stack_a);
+
 	}
 }
 
@@ -73,9 +64,9 @@ void	ft_sort_stack(t_stack **stack_a, int size)
 	else if (size == 2)
 		ft_sort_2(stack_a);
 	else if (size == 3)
-		ft_sort_3(stack_a, &stack_b);
-	else if (size == 4)
-		ft_sort_4(stack_a, &stack_b);
+		ft_sort_3(stack_a);
+	else if (size == 4 || size == 5)
+		ft_sort_5(stack_a, &stack_b);
 	else
 		ft_radix_sort(stack_a, &stack_b, size);
 }

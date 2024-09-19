@@ -6,7 +6,7 @@
 /*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 23:19:30 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/17 19:35:49 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/18 15:31:30 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,38 @@
 void	ft_swap_a(t_stack **stack_a)
 {
 	t_stack	*first;
+	t_stack	*second;
 
-	if (!stack_a || !(*stack_a) || !(*stack_a)->next)
+	if (!stack_a || !*stack_a || !(*stack_a)->next)
 		return ;
 	first = *stack_a;
-	*stack_a = (*stack_a)->next;
-	first->next = (*stack_a)->next;
-	(*stack_a)->next = first;
+	second = first->next;
+	*stack_a = second;
+	first->next = second->next;
+	if (second->next)
+		second->next->prev = first;
+	second->next = first;
+	first->prev = second;
+	second->prev = NULL;
 	ft_printf("sa\n");
 }
 
 void	ft_swap_b(t_stack **stack_b)
 {
 	t_stack	*first;
-
-	if (!stack_b || !(*stack_b) || !(*stack_b)->next)
+	t_stack	*second;
+	
+	if (!stack_b || !*stack_b || !(*stack_b)->next)
 		return ;
 	first = *stack_b;
-	*stack_b = (*stack_b)->next;
-	first->next = (*stack_b)->next;
-	(*stack_b)->next = first;
+	second = first->next;
+	*stack_b = second;
+	first->next = second->next;
+	if (second->next)
+		second->next->prev = first;
+	second->next = first;
+	first->prev = second;
+	second->prev = NULL;
 	ft_printf("sb\n");
 }
 

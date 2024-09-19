@@ -6,16 +6,15 @@
 /*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 23:10:44 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/18 02:21:06 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/18 11:15:16 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// [ ] to do : condition when a number is bigger than the max int
-// [ ] to do : condition when a number is smaller than the min int
-// [ ] to do : condition to handle the case the argument is mixed with strings and int
-// [ ] to do : condition to check that no sign is used directly after a number 
+// [x] to do : condition when a number is bigger than the max int
+// [x] to do : condition when a number is smaller than the min int
+// [x] to do : condition to check that no sign is used directly after a number 
 // [x] to do : condition to check is there are multiple same numbers(same value) ex: 22 22
 int    ft_count_args(char **args)
 {
