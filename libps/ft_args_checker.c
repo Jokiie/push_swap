@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_args_checker.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: ccodere <ccodere@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 23:10:44 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/18 11:15:16 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/19 13:44:32 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,14 @@ int    ft_isinvalid_char(char *str)
     {
         if (ft_isdigit(str[i]))
         {
-            if ((str[i + 1] && (str[i + 1] == '-' || str[i + 1] == '+')) || ft_isalpha(str[i + 1]))
+            if ((str[i + 1] && (str[i + 1] == '-' || str[i + 1] == '+'))
+                || ft_isalpha(str[i + 1]))
                 return (1);
         }
         if (ft_isalpha(str[i]))
             return (1);
-        if (!ft_isdigit(str[i]) && str[i] != ' ' && str[i] != '-' && str[i] != '+')
+        if (!ft_isdigit(str[i])
+            && str[i] != ' ' && str[i] != '-' && str[i] != '+')
             return (1);
         if (str[i] == ' ' && str[i + 1] == ' ')
             return (1);

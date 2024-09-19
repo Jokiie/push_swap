@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: ccodere <ccodere@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 04:07:26 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/19 00:20:06 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/19 13:30:45 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	ft_init_sort_free(int *tab, int size)
 	ft_init_stack(&stack_a, tab, size);
 	if (!ft_stack_is_sorted(&stack_a))
 		ft_sort_stack(&stack_a, size);
-	if (stack_a)
-	   ft_printf_stack_content(stack_a);
+	//if (stack_a)
+	//   ft_printf_stack_content(stack_a);
 	ft_free_stack(stack_a);
 }
 
@@ -90,6 +90,8 @@ int	main(int argc, char **argv)
 	int		size;
 
 	tab = NULL;
+	args = NULL;
+	size = 0;
 	if (argc > 1)
 	{
 		args = ft_combine_args(argc, argv);
