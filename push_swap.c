@@ -6,7 +6,7 @@
 /*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 04:07:26 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/20 02:52:18 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/20 12:48:16 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,30 @@ void	ft_init_stack(t_stack **stack, int *tab, int size)
 	}
 }
 
+char	**ft_combine_args(int argc, char **argv, int start)
+{
+	char	**args;
+	char	**split;
+	int		j;
+	int		k;
+
+	args = malloc(sizeof(char *) * (argc * 10));
+	if (!args)
+		return (NULL);
+	k = 0;
+	while (start < argc)
+	{
+		split = ft_split(argv[start], ' ');
+		j = 0;
+		while (split[j])
+			args[k++] = ft_strdup(split[j++]);
+		ft_free_split(split);
+		start++;
+	}
+	args[k] = NULL;
+	return (args);
+}
+
 void	ft_init_sort_free(int *tab, int size)
 {
 	t_stack	*stack_a;
@@ -51,32 +75,6 @@ void	ft_init_sort_free(int *tab, int size)
 	ft_free_stack(stack_a);
 }
 
-char	**ft_combine_args(int argc, char **argv)
-{
-	char	**args;
-	char	**split;
-	int		i;
-	int		j;
-	int		k;
-
-	args = malloc(sizeof(char *) * (argc * 10));
-	if (!args)
-		return (NULL);
-	k = 0;
-	i = 1;
-	while (i < argc)
-	{
-		split = ft_split(argv[i], ' ');
-		j = 0;
-		while (split[j])
-			args[k++] = ft_strdup(split[j++]);
-		ft_free_split(split);
-		i++;
-	}
-	args[k] = NULL;
-	return (args);
-}
-
 int	main(int argc, char **argv)
 {
 	int		*tab;
@@ -86,21 +84,20 @@ int	main(int argc, char **argv)
 	tab = NULL;
 	args = NULL;
 	size = 0;
-	if (argc > 1)
+	if (ft_check_args(argc - 1, argv + 1) == 0)
 	{
-		args = ft_combine_args(argc, argv);
-		size = ft_count_args(args);
-		if (ft_check_args(size, args) == 0)
-			tab = ft_init_tab(args, size);
-		else
+		if (argc > 1)
 		{
-			ft_free_split(args);
-			return (1);
+			args = ft_combine_args(argc, argv, 1);
+			size = ft_count_args(args);
+			if (ft_check_args(size, args) == 0)
+			{
+				tab = ft_init_tab(args, size);
+				ft_free_split(args);
+				ft_init_sort_free(tab, size);
+			}
 		}
-		ft_free_split(args);
 	}
-	if (size >= 2)
-		ft_init_sort_free(tab, size);
 	if (tab)
 		free(tab);
 	return (0);

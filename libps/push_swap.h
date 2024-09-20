@@ -6,7 +6,7 @@
 /*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 22:32:10 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/20 01:55:51 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/20 12:34:10 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void				ft_rotate_b(t_stack **stack_b);
 void				ft_rotate_a(t_stack **stack_a);
 
 void				ft_perror(char *msg);
+int					ft_isplusminus(char c);
+int					ft_isallowed_char(char c);
 
 void				ft_free_split(char **args);
 void				ft_free_stack(t_stack *stack);
