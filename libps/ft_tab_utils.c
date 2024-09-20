@@ -6,7 +6,7 @@
 /*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 12:09:10 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/17 19:27:44 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/20 01:33:04 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 t_bool	ft_tab_is_sorted(int *tab, int size, int i)
 {
-    int j;
+	int	j;
 
-    j = i + 1;
-    while (i < size && j < size)
-    {
-        if (tab[i++] > tab[j++])
-            return (FALSE);
-    }
-    return (TRUE);
+	j = i + 1;
+	while (i < size && j < size)
+	{
+		if (tab[i++] > tab[j++])
+			return (FALSE);
+	}
+	return (TRUE);
 }
 
 int	ft_tabsize(int *tab)
 {
-	int size;
-	
+	int	size;
+
 	size = 0;
 	while (*tab)
 	{

@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccodere <ccodere@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 04:07:26 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/19 13:30:45 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/20 02:52:18 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libps/push_swap.h"
-
-// [x] to do : Add a function to check if the stack is sorted
-// [x] to do : Have no leaks
-// [x] to do : Function to handle the case the argument is mixed with strings and int
 
 int	*ft_init_tab(char **args, int size)
 {
@@ -46,14 +42,12 @@ void	ft_init_stack(t_stack **stack, int *tab, int size)
 
 void	ft_init_sort_free(int *tab, int size)
 {
-	t_stack *stack_a;
+	t_stack	*stack_a;
 
 	stack_a = NULL;
 	ft_init_stack(&stack_a, tab, size);
 	if (!ft_stack_is_sorted(&stack_a))
 		ft_sort_stack(&stack_a, size);
-	//if (stack_a)
-	//   ft_printf_stack_content(stack_a);
 	ft_free_stack(stack_a);
 }
 
@@ -96,7 +90,7 @@ int	main(int argc, char **argv)
 	{
 		args = ft_combine_args(argc, argv);
 		size = ft_count_args(args);
-		if (ft_check_args(size, args, 0) == 0)
+		if (ft_check_args(size, args) == 0)
 			tab = ft_init_tab(args, size);
 		else
 		{

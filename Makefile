@@ -6,7 +6,7 @@
 #    By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/11 12:35:07 by ccodere           #+#    #+#              #
-#    Updated: 2024/09/18 01:25:01 by ccodere          ###   ########.fr        #
+#    Updated: 2024/09/20 01:57:30 by ccodere          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,6 @@ LIBPS_DIR = libps
 
 LIBPS = $(LIBPS_DIR)/libps.a
 
-# [ ] to do: write manually the file here.
-# [ ] to do: rework make push_swap command
 SRCS = push_swap.c
 
 OBJS = $(SRCS:.c=.o)

@@ -6,7 +6,7 @@
 #    By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/12 22:54:08 by ccodere           #+#    #+#              #
-#    Updated: 2024/09/17 19:42:30 by ccodere          ###   ########.fr        #
+#    Updated: 2024/09/20 00:59:11 by ccodere          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ NAME = libps.a
 
 HEADER = push_swap.h
 
-SRCS = ft_algorithms.c ft_addnode_back.c ft_args_checker.c ft_free.c ft_lastnode.c \
-	   ft_newnode.c ft_perror.c ft_radix_sort.c ft_stack_utils.c ft_tab_utils.c \
-	   push.c reverse_rotate.c rotate.c swap.c
+SRCS = ft_algorithms.c ft_args_checker.c ft_free.c ft_perror.c ft_radix_sort.c \
+	   ft_node_utils.c ft_stack_utils.c ft_tab_utils.c ft_push.c \
+	   ft_reverse_rotate.c ft_rotate.c ft_swap.c
 
 OBJS = $(SRCS:.c=.o)
 

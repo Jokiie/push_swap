@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccodere <ccodere@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 22:32:10 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/19 14:22:25 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/20 01:55:51 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,29 +47,29 @@ void				ft_rotate_a(t_stack **stack_a);
 void				ft_perror(char *msg);
 
 void				ft_free_split(char **args);
-void	            ft_free_stacks(t_stack **stack_a, t_stack **stack_b);
-void	            ft_free_stack(t_stack *stack);
+void				ft_free_stack(t_stack *stack);
 
 int					ft_count_args(char **args);
-int					ft_check_args(int argc, char **args, int i);
+int					ft_check_args(int argc, char **args);
 int					ft_isinvalid_char(char *str);
 int					ft_check_nbr(const char *str);
 int					ft_check_duplicate(int argc, char **argv, int i);
 
 t_bool				ft_tab_is_sorted(int *tab, int size, int i);
-int                 ft_tabsize(int *tab);
+int					ft_tabsize(int *tab);
 
 t_bool				ft_stack_is_sorted(t_stack **stack);
 int					ft_stacksize(t_stack *stack);
 int					ft_find_min(t_stack **stack);
-void                ft_printf_stack_content(t_stack *stack);
+void				ft_printf_stack_content(t_stack *stack);
 
-void				ft_radix_sort(t_stack **stack_a, t_stack **stack_b, int size);
+void				ft_radix_sort(t_stack **stack_a, t_stack **stack_b,
+						int size);
 
 void				ft_sort_2(t_stack **stack_a);
 void				ft_sort_3(t_stack **stack_a);
-void				ft_sort_4(t_stack **stack_a, t_stack **stack_b);
-void				ft_sort_5(t_stack **stack_a, t_stack **stack_b);
+void				ft_sort_more(t_stack **stack_a, t_stack **stack_b,
+						int size);
 void				ft_sort_stack(t_stack **stack_a, int size);
 
 #endif

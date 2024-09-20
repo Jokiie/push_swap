@@ -6,13 +6,12 @@
 /*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:09:32 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/09 20:47:10 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/20 01:21:35 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-// Example
-// in ft_lstadd_back
+
 t_list	*ft_lstlast(t_list *lst)
 {
 	t_list	*last;
@@ -23,6 +22,6 @@ t_list	*ft_lstlast(t_list *lst)
 		last = lst;
 		while (last->next != NULL)
 			last = last->next;
-	}	
+	}
 	return (last);
 }
