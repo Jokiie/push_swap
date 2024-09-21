@@ -1,1 +1,1 @@
-This project is currently not working as intented. It's a work in progress.
+This project is now completed and need evaluation!
