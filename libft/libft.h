@@ -6,7 +6,7 @@
 /*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 12:20:14 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/18 02:23:20 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/21 00:04:03 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_list
 
 char				*ft_strchr(const char *str, int c);
 char				*ft_strdup(const char *s1);
+char				*ft_strndup(const char *src, size_t n);
 char				*ft_strnstr(const char *hs, const char *nd, size_t len);
 char				*ft_strrchr(const char *str, int c);
 char				*ft_substr(char const *s, unsigned int start, size_t len);

@@ -6,7 +6,7 @@
 /*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 23:10:44 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/20 12:55:21 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/21 01:24:29 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,26 +76,28 @@ int	ft_check_duplicate(int argc, char **argv, int i)
 	return (0);
 }
 
-int	ft_check_args(int argc, char **argv)
+int	ft_check_args(int argc, char **argv, int i)
 {
-	int	is_error;
-	int	i;
-
-	is_error = 0;
-	i = 0;
-	while (i < argc && is_error != 1)
+	while (i < argc)
 	{
 		if (argv[i][0] == '\0' || (argv[i][0] == ' ' && argv[i][1] == '\0'))
-			is_error = 1;
+		{
+			ft_perror("Error\n");
+			return (1);
+		}
 		if (ft_isinvalid_char(argv[i]) == 1)
-			is_error = 1;
+		{
+			ft_perror("Error\n");
+			return (1);
+		}
 		if (ft_check_nbr(argv[i]) == 1)
-			is_error = 1;
+		{
+			ft_perror("Error\n");
+			return (1);
+		}
 		i++;
 	}
 	if (ft_check_duplicate(argc, argv, 0) == 1)
-		is_error = 1;
-	if (is_error == 1)
 	{
 		ft_perror("Error\n");
 		return (1);

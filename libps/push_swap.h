@@ -6,7 +6,7 @@
 /*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 22:32:10 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/20 12:34:10 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/21 01:22:30 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,12 @@ void				ft_free_split(char **args);
 void				ft_free_stack(t_stack *stack);
 
 int					ft_count_args(char **args);
-int					ft_check_args(int argc, char **args);
+int					ft_check_args(int argc, char **args, int i);
 int					ft_isinvalid_char(char *str);
 int					ft_check_nbr(const char *str);
 int					ft_check_duplicate(int argc, char **argv, int i);
 
+int					ft_argsize(int argc, char **args);
 t_bool				ft_tab_is_sorted(int *tab, int size, int i);
 int					ft_tabsize(int *tab);
 

@@ -6,7 +6,7 @@
 /*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 04:07:26 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/20 12:48:16 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/21 01:29:02 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ int	*ft_init_tab(char **args, int size)
 	int	i;
 	int	j;
 
+	if (ft_check_args(size, args, 0) == 1)
+	{
+		ft_free_split(args);
+		exit(1);
+	}
 	int_tab = (int *)malloc(sizeof(int) * size);
 	if (!int_tab)
 		return (NULL);
@@ -40,25 +45,25 @@ void	ft_init_stack(t_stack **stack, int *tab, int size)
 	}
 }
 
-char	**ft_combine_args(int argc, char **argv, int start)
+char	**ft_combine_args(int argc, char **argv, int i)
 {
 	char	**args;
 	char	**split;
 	int		j;
 	int		k;
 
-	args = malloc(sizeof(char *) * (argc * 10));
+	args = malloc(ft_argsize(argc, argv) * sizeof(char *));
 	if (!args)
 		return (NULL);
 	k = 0;
-	while (start < argc)
+	while (i < argc)
 	{
-		split = ft_split(argv[start], ' ');
+		split = ft_split(argv[i], ' ');
 		j = 0;
 		while (split[j])
 			args[k++] = ft_strdup(split[j++]);
 		ft_free_split(split);
-		start++;
+		i++;
 	}
 	args[k] = NULL;
 	return (args);
@@ -72,6 +77,8 @@ void	ft_init_sort_free(int *tab, int size)
 	ft_init_stack(&stack_a, tab, size);
 	if (!ft_stack_is_sorted(&stack_a))
 		ft_sort_stack(&stack_a, size);
+	if (tab)
+		free(tab);
 	ft_free_stack(stack_a);
 }
 
@@ -84,21 +91,17 @@ int	main(int argc, char **argv)
 	tab = NULL;
 	args = NULL;
 	size = 0;
-	if (ft_check_args(argc - 1, argv + 1) == 0)
+	if (ft_check_args(argc - 1, argv + 1, 0) == 0)
 	{
 		if (argc > 1)
 		{
 			args = ft_combine_args(argc, argv, 1);
 			size = ft_count_args(args);
-			if (ft_check_args(size, args) == 0)
-			{
-				tab = ft_init_tab(args, size);
-				ft_free_split(args);
-				ft_init_sort_free(tab, size);
-			}
+			tab = ft_init_tab(args, size);
+			ft_free_split(args);
 		}
 	}
-	if (tab)
-		free(tab);
+	if (size >= 2)
+		ft_init_sort_free(tab, size);
 	return (0);
 }

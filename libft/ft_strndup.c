@@ -1,45 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/20 11:40:38 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/21 01:08:37 by ccodere          ###   ########.fr       */
+/*   Created: 2024/09/21 00:03:26 by ccodere           #+#    #+#             */
+/*   Updated: 2024/09/21 00:03:40 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	ft_perror(char *msg)
+char	*ft_strndup(const char *src, size_t n)
 {
-	ft_putstr_fd(msg, STDERR_FILENO);
-}
+	size_t	i;
+	char	*dst;
 
-int	ft_isplusminus(char c)
-{
-	return (c == '+' || c == '-');
-}
-
-int	ft_isallowed_char(char c)
-{
-	return (ft_isdigit(c) || ft_isplusminus(c) || c == ' ');
-}
-
-int	ft_argsize(int argc, char **args)
-{
-	int	len;
-	int	i;
-
-	i = 1;
-	len = 0;
-	while (i < argc)
+	i = 0;
+	dst = (char *)malloc(sizeof(char) * (n + 1));
+	if (!dst || !src)
+		return (NULL);
+	while (src[i] && i < n)
 	{
-		len = len + ft_strlen(args[i]);
-		if (i < (argc - 1))
-			len += 1;
+		dst[i] = src[i];
 		i++;
 	}
-	return (len);
+	dst[i] = '\0';
+	return (dst);
 }

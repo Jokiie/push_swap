@@ -6,7 +6,7 @@
 /*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:13:14 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/20 11:03:44 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/21 00:04:47 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,24 +49,6 @@ static size_t	ft_wrdlen(const char *s, char sep)
 		s++;
 	}
 	return (len);
-}
-
-static char	*ft_strndup(const char *src, size_t n)
-{
-	size_t	i;
-	char	*dst;
-
-	i = 0;
-	dst = (char *)malloc(sizeof(char) * (n + 1));
-	if (!dst || !src)
-		return (NULL);
-	while (src[i] && i < n)
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (dst);
 }
 
 static void	ft_free(char **result, size_t i)
