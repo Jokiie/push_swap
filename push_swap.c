@@ -77,8 +77,6 @@ void	ft_init_sort_free(int *tab, int size)
 	ft_init_stack(&stack_a, tab, size);
 	if (!ft_stack_is_sorted(&stack_a))
 		ft_sort_stack(&stack_a, size);
-	if (tab)
-		free(tab);
 	ft_free_stack(stack_a);
 }
 
@@ -103,5 +101,7 @@ int	main(int argc, char **argv)
 	}
 	if (size >= 2)
 		ft_init_sort_free(tab, size);
+	if (tab)
+		free(tab);
 	return (0);
 }
